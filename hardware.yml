@@ -1,0 +1,6 @@
+- name: LED
+  img: led
+- name: 1 x Solderless breadboard
+  img: breadboard
+- name: 2 x Male-to-female jumper leads
+  img: jumper-male-to-female
