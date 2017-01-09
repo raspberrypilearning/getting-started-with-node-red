@@ -121,6 +121,6 @@ The *change* block allows you to change the message that is being sent. Remember
 
 The *delay* block allows you to wait for a given number of seconds.
 
-For both blocks, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a block to more than one other block, for example the "Start" node below is linked to both the *Red LED* and the *delay 5 seconds* nodes. Use this example to get you started:
+For both blocks, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a block to more than one other block, for example the "Start" node below is linked to both the "Red LED" and the "delay 5 s" nodes. Use this example to get you started:
 
   ![Traffic lights help](images/traffic-lights.png)
