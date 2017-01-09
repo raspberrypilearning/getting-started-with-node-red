@@ -109,6 +109,8 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
   ![Debug node](images/debug-node.png)
 
+  For example, this is the output if you click first on the "On" node and then on the "Off" node.
+
   ![Debug panel](images/debug-panel.png)
 
 # What next?
