@@ -32,6 +32,80 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
 
 ## Wire up the LED
 
-1. Wire up an LED to your Raspberry Pi by following this diagram. 
+1. Wire up an LED to GPIO pin 17 on your Raspberry Pi by following this diagram:
 
-![](images/led-gpio17.png)
+  ![](images/led-gpio17.png)
+
+  The positive leg of the LED is usually longer, and it is this leg which should be inserted into the left side of the breadboard (e1 on the diagram).
+
+# Start Node RED
+
+1. Start up your Raspberry Pi and open Node RED
+
+  ![Start up Node RED](images/start-nodered.png)
+
+1. You should see a window displaying some information about Node RED starting up.
+
+  ![Node RED startup information](images/node-red-startup.png)
+
+1. Now open the internet browser Chromium
+
+  ![Open Chromium](images/start-chromium.png)
+
+1. To see the Node RED interface, in the address bar type in `localhost:1880` and press Enter. Your Raspberry Pi does not need to be connected to the internet to use Node RED - `localhost` is the address the Raspberry Pi uses to refer to itself and `:1880` means that it is looking at port 1880.
+
+  ![Navigate to Node RED](images/blank-node-red.png)
+
+# Connecting to a GPIO pin
+
+Programs in Node RED are called flows. You can see that your blank page is labelled as "Flow 1" in the tab at the top. You can create as many flows as you want and they can all run at the same time.
+
+1. The coloured blocks on the left side of the interface are the **nodes**. Scroll right down to the bottom of the list and you will see some nodes labelled Raspberry Pi.
+
+  ![Raspberry Pi nodes](images/raspberry-pi-nodes.png)
+
+1. You will see two nodes with the label `rpi gpio` - these are the ones we will use to talk to the GPIO pins on the Raspberry Pi. The first one in the list with the Raspberry on the left is for *inputs* (e.g. when we want to get an input from a button) and the second one is for *outputs* (e.g. when we want to tell a LED to light up). Drag an output node onto the blank page in the middle.
+
+  ![GPIO output node](images/drag-output-node.png)
+
+1. Double click on the node and a box will appear to let you configure the node. Change the pin to be GPIO17 and tick `Initialise pin state?`, leaving the setting to be low. Give the node a name, we called it Green LED because the LED we used was green, but if yours is a different colour feel free to change the name. When you are finished, click "Done".
+
+  ![Set up output node](images/set-up-output.png)
+
+# Injecting messages
+
+1. Now scroll back up to the list of nodes. To turn the LED on and off, we need an input - in Node RED we can *inject* messages into the flow and cause things to happen as a result. Drag an `inject` node onto the flow and double click on it. Under **Payload** change the data type to 'string' and type a 1 in the Payload box - this will be our message. Type "On" in the 'Name' box. Press Done.
+
+1. Repeat the previous step to create another inject node, except this time add 0 as the payload and call this node "Off".
+
+  ![Create two inject nodes](images/add-2-nodes.png)
+
+1. Now look for the grey dot on the right side of the inject nodes. Click and drag from the grey dot on the "On" node to the grey dot on your LED node to join them up. Repeat for the "Off" node, also joining it to the LED node.
+
+  ![Join nodes together](images/join-nodes.png)
+
+
+# Deploying the flow
+
+1. Our flow is finished, so we can *Deploy* it. Click on the big red **Deploy** button on the top right of the screen. A message should pop up at the top saying "Successfully deployed". This is similar to pressing the green flag on Scratch or F5 to run your code on Python.
+
+  ![Deploy flow](images/deploy.png)
+
+1. Now click on the blue square on the left of the "On" node. Your LED should light up. You should be able to turn the LED off by clicking the blue square on the "Off" node.
+
+  ![Deploy on](images/deploy-on.png)
+
+# Debugging your flow
+
+1. If your LED doesn't turn on and off, firstly check your wiring on the breadboard, and check you have wired it to Grond and Pin 17 correctly on your Raspberry Pi. You can also ask Node RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node RED will show you what was injected in the **Debug** tab to the right.
+
+  ![Deploy on](images/debug-node.png)
+
+
+# What next?
+
+Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator?
+
+To do this, you will need to use two more of the blocks from the left side - *change* and *delay*. See if you can work out how to do this. An example has been started here:
+
+  ![Traffic lights help](images/traffic-lights.png)
