@@ -97,15 +97,15 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
   ![Deploy flow](images/deploy.png)
 
-1. Now click on the blue square on the left of the "On" node. Your LED should light up. You should be able to turn the LED off by clicking the blue square on the "Off" node.
+1. Now click on the blue square on the left of the "On" node to *inject* the message `1`. The **Green LED** node receives the message and your LED should light up. You should be able to turn the LED off by clicking the blue square on the "Off" node, which injects the message `0`.
 
   ![Deploy on](images/deploy-on.png)
 
 # Debugging your flow
 
-1. If your LED doesn't turn on and off, firstly check your wiring on the breadboard. Check you have wired your LED to Ground and Pin 17 correctly on your Raspberry Pi.
+1. If your LED doesn't turn on and off, firstly check you have wired the components correctly on the breadboard. Also make sure you check you have wired your LED to Ground and Pin 17 on your Raspberry Pi.
 
-  You can also ask Node RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node RED will show you what was injected in the **Debug** tab to the right.
+  You can also ask Node RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node RED will show you what was injected in the **Debug** tab on the right side of the screen - click the tab to display the messages.
 
   ![Debug node](images/debug-node.png)
 
@@ -115,12 +115,12 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
 Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator?
 
-To do this, you will need to use two more of the blocks from the left side - *change* and *delay*.
+To do this, you will need to use two more of the blocks from the *function* section - *change* and *delay*.
 
 The *change* block allows you to change the message that is being sent. Remember that a payload message of 1 means to turn the LED on, and a payload message of 0 turns it off.
 
 The *delay* block allows you to wait for a given number of seconds.
 
-For both blocks, you can drag them in as you did before, and double click on them to change their configuration. Use this example to get you started:
+For both blocks, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a block to more than one other block, for example the "Start" node below is linked to both the *Red LED* and the *delay 5 seconds* nodes. Use this example to get you started:
 
   ![Traffic lights help](images/traffic-lights.png)
