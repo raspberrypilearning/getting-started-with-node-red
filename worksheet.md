@@ -78,11 +78,11 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
   ![Inject node](images/inject-node.png)
 
-1. Double click on the inject node. Under **Payload** change the data type to 'string' and type a 1 in the Payload box - this will be our message. Type "On" in the 'Name' box. Press Done.
+1. Double click on the inject node. Use the drop down next to **Payload** to change the data type to 'string' and type a 1 in the Payload box - this will be the message. Type "On" in the 'Name' box. Press Done.
 
   ![Edit inject node](images/edit-inject.png)
 
-1. Repeat the previous step to create another inject node, except this time add 0 as the payload and call this node "Off".
+1. Repeat the previous steps to create another inject node, except this time add 0 as the payload message, and call this node "Off".
 
   ![Create two inject nodes](images/add-2-nodes.png)
 
@@ -103,15 +103,24 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
 # Debugging your flow
 
-1. If your LED doesn't turn on and off, firstly check your wiring on the breadboard, and check you have wired it to Grond and Pin 17 correctly on your Raspberry Pi. You can also ask Node RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node RED will show you what was injected in the **Debug** tab to the right.
+1. If your LED doesn't turn on and off, firstly check your wiring on the breadboard. Check you have wired your LED to Ground and Pin 17 correctly on your Raspberry Pi.
 
-  ![Deploy on](images/debug-node.png)
+  You can also ask Node RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node RED will show you what was injected in the **Debug** tab to the right.
 
+  ![Debug node](images/debug-node.png)
+
+  ![Debug panel](images/debug-panel.png)
 
 # What next?
 
 Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator?
 
-To do this, you will need to use two more of the blocks from the left side - *change* and *delay*. See if you can work out how to do this. An example has been started here:
+To do this, you will need to use two more of the blocks from the left side - *change* and *delay*.
+
+The *change* block allows you to change the message that is being sent. Remember that a payload message of 1 means to turn the LED on, and a payload message of 0 turns it off.
+
+The *delay* block allows you to wait for a given number of seconds.
+
+For both blocks, you can drag them in as you did before, and double click on them to change their configuration. Use this example to get you started:
 
   ![Traffic lights help](images/traffic-lights.png)
