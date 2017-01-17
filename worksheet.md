@@ -121,39 +121,39 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
 1. Remove your "Turn on" and "Turn off" inject nodes by clicking the node and pressing "Delete" on the keyboard. We no longer need these as we will be controlling the LED using a physical button.
 
-1. Now we need to add a Raspberry Pi GPIO input node, which has the raspberry symbol on the left. Set up your button node as follows:
+1. Now we need to add a Raspberry Pi GPIO input node - this is the node with the raspberry symbol on the left. Set up this node to receive input from your physical button as follows:
 
   ![Set up the button node](images/set-up-input.png)
 
-  Specifying "pullup" means that GPIO pin 4 will be normally set to `HIGH`, and pressing the button will cause it to go `LOW`.
+  Specifying "pullup" means that GPIO pin 4 will be set to `HIGH`, and pressing the button will cause it to go `LOW`.
 
 1. Now join up your button node output to the debug and LED nodes you already had, then deploy the flow and test it by pressing the button.
 
   ![Button flow set up wrongly](images/wrong-button-flow.png)
 
-  You will notice that the LED starts off being on, and when you press the button it goes off - that's not quite right! This is because we are using "pullup" as explained in the previous step - the value being sent to the LED normally will be `HIGH` (which generates the messsage 1, turning the LED on). When we press the button, we cause the pin to go `LOW`, generating a 0 signal which turns off the LED. So we need to reverse the values.
+  You will notice that the LED starts off being on, and when you press the button it goes off - that's not quite right! This is because we are using "pullup" as explained in the previous step - the button pin will be `HIGH` by default. `HIGH` generates the message 1, and this turns the LED on. When we press the button, we cause the pin to go `LOW`, generating a 0 message which turns off the LED. So, we need to reverse the values - we want the LED to be `LOW` by default and go `HIGH` when the button is pressed.
 
 1. Remove the connection you made between the button node and the LED node by clicking on the line and pressing "Delete" on the keyboard.
 
-1. Add a switch node which can be found in the *function* section. This node is similar to the `if / elif / else` type constructs you may have seen in Scratch or Python. You can configure it to have multiple output paths (circled in red) depending on the value passed in. In this case we will set up the node so that if the message payload was 1 the first path will be followed. Click the small "Add" button at the bottom, and for the second path select "otherwise". This path will be followed if the input was anything other than 1. Click "Done" when you are finished.
+1. Add a switch node which can be found in the *function* section. This node is similar to the `if / elif / else` type constructs you may have seen in Scratch or Python. You can configure it to have multiple output paths (outlined in red on the screenshot) depending on the value passed in. In this case we will set up the node so that if the property `msg.payload` is equal to 1, the first path will be followed. Click the small "Add" button at the bottom to add a second path, and for this path select "otherwise" in the drop down. This path will be followed if the input was anything other than 1. Click "Done" when you are finished.
 
   ![Switch node](images/switch-node.png)
 
-1. You should see a switch node with two dots for outputs, like this:
+1. You should see a switch node with two dots for outputs. Note that the title "If input is 1" is simply a description of what the node does, and has no effect on its function.
 
   ![Switch example](images/switch-example.png)
 
-1. Join up the button node to the *input* of the switch node (on the left side).
+1. Join up the button node to the *input* (left side) of the switch node.
 
 1. Now drag a yellow "change" node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember when we created the switch node, the first output was set to be followed if the input message was 1. If this is the case, we should use this node to change the message to 0.
 
   ![Change node](images/change-node.png)
 
-1. Press "Done" and then connect this node to the first output of the switch node, and to the LED node as follows:
+1. Press "Done" and then draw a line from first output of the switch node to the change node. Then connect the output of the change node to the LED node:
 
   ![Incomplete flow](images/half-flow.png)
 
-1. Now add another change node that connects to output 2 of the switch node to change the message to the value of 1. Don't forget to also connect this node to the LED node. When you are ready, deploy your flow and then push the button to confirm it works.
+1. Now add another change node to set the `msg.payload` to 0. Connect this node to output 2 of the switch node and then to the LED node. When you are ready, deploy your flow and then push the physical button to confirm it works properly.
 
 # What next?
 
