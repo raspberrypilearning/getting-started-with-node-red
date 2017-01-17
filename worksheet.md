@@ -131,7 +131,7 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
   ![Button flow set up wrongly](images/wrong-button-flow.png)
 
-  You will notice that the LED starts off being on, and when you press the button it goes off - that's not quite right! This is because we are using "pullup" as explained in the previous step - the button pin will be `HIGH` by default. `HIGH` generates the message 1, and this turns the LED on. When we press the button, we cause the pin to go `LOW`, generating a 0 message which turns off the LED. So, we need to reverse the values - we want the LED to be `LOW` by default and go `HIGH` when the button is pressed.
+  You will notice that the LED starts off being on, and when you press the button it goes off - that's not quite right! This is because we are using "pullup" as explained in the previous step - the button pin will be `HIGH` by default. `HIGH` generates the message 1, and this turns the LED on. When we press the button, we cause the pin to go `LOW`, generating a 0 message which turns off the LED. So, we need to reverse the values - we want the LED to receive message `0` by default and the message `1` when the button is pressed.
 
 1. Remove the connection you made between the button node and the LED node by clicking on the line and pressing "Delete" on the keyboard.
 
@@ -139,13 +139,13 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
   ![Switch node](images/switch-node.png)
 
-1. You should see a switch node with two dots for outputs. Note that the title "If input is 1" is simply a description of what the node does, and has no effect on its function.
+1. You should see your newly created switch node, with two dots on the right side for outputs. Note that the title "If input is 1" is simply a description of what the node does, and has no effect on its function.
 
   ![Switch example](images/switch-example.png)
 
-1. Join up the button node to the *input* (left side) of the switch node.
+1. Join up the GPIO input button node to the *input* (left side) of the switch node.
 
-1. Now drag a yellow "change" node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember when we created the switch node, the first output was set to be followed if the input message was 1. If this is the case, we should use this node to change the message to 0.
+1. Now drag in a yellow "change" node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember when we created the switch node, the first output was set to be followed if the input message was 1. We will use the *change* node to change the message to 0.
 
   ![Change node](images/change-node.png)
 
@@ -157,7 +157,7 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
 # What next?
 
-Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator?
+Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator? Can it be controlled with a button?
 
 To do this, you will need to use more of the nodes from the *function* section. The *delay* block allows you to wait for a given number of seconds.
 
