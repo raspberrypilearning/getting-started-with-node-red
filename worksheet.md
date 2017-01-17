@@ -113,16 +113,54 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
   ![Debug panel](images/debug-panel.png)
 
+# Adding a button
+
+1. Now let's add a button to control the LED. Wire up your button to the Raspberry Pi as shown in the image below so that your LED is still connected to GPIO pin 17 and your button is connected to GPIO pin 4:
+
+  ![Button and LED](images/buttonlightsLED.gif)
+
+1. Remove your "Turn on" and "Turn off" inject nodes by clicking the node and pressing "Delete" on the keyboard. We no longer need these as we will be controlling the LED using a physical button.
+
+1. Now we need to add a Raspberry Pi GPIO input node, which has the raspberry symbol on the left. Set up your button node as follows:
+
+  ![Set up the button node](images/set-up-input.png)
+
+  Specifying "pullup" means that GPIO pin 4 will be normally set to `HIGH`, and pressing the button will cause it to go `LOW`.
+
+1. Now join up your button node output to the debug and LED nodes you already had, then deploy the flow and test it by pressing the button.
+
+  ![Button flow set up wrongly](images/wrong-button-flow.png)
+
+  You will notice that the LED starts off being on, and when you press the button it goes off - that's not quite right! This is because we are using "pullup" as explained in the previous step - the value being sent to the LED normally will be `HIGH` (which generates the messsage 1, turning the LED on). When we press the button, we cause the pin to go `LOW`, generating a 0 signal which turns off the LED. So we need to reverse the values.
+
+1. Remove the connection you made between the button node and the LED node by clicking on the line and pressing "Delete" on the keyboard.
+
+1. Add a switch node which can be found in the *function* section. This node is similar to the `if / elif / else` type constructs you may have seen in Scratch or Python. You can configure it to have multiple output paths (circled in red) depending on the value passed in. In this case we will set up the node so that if the message payload was 1 the first path will be followed. Click the small "Add" button at the bottom, and for the second path select "otherwise". This path will be followed if the input was anything other than 1. Click "Done" when you are finished.
+
+  ![Switch node](images/switch-node.png)
+
+1. You should see a switch node with two dots for outputs, like this:
+
+  ![Switch example](images/switch-example.png)
+
+1. Join up the button node to the *input* of the switch node (on the left side).
+
+1. Now drag a yellow "change" node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember when we created the switch node, the first output was set to be followed if the input message was 1. If this is the case, we should use this node to change the message to 0.
+
+  ![Change node](images/change-node.png)
+
+1. Press "Done" and then connect this node to the first output of the switch node, and to the LED node as follows:
+
+  ![Incomplete flow](images/half-flow.png)
+
+1. Now add another change node that connects to output 2 of the switch node to change the message to the value of 1. Don't forget to also connect this node to the LED node. When you are ready, deploy your flow and then push the button to confirm it works.
+
 # What next?
 
 Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator?
 
-To do this, you will need to use two more of the blocks from the *function* section - *change* and *delay*.
+To do this, you will need to use more of the nodes from the *function* section. The *delay* block allows you to wait for a given number of seconds.
 
-The *change* block allows you to change the message that is being sent. Remember that a payload message of 1 means to turn the LED on, and a payload message of 0 turns it off.
-
-The *delay* block allows you to wait for a given number of seconds.
-
-For both blocks, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a block to more than one other block, for example the "Start" node below is linked to both the "Red LED" and the "delay 5 s" nodes. Use this example to get you started:
+For all nodes, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a node to more than one other node, for example the "Start" node below is linked to both the "Red LED" and the "delay 5 s" nodes. Use this example to get you started:
 
   ![Traffic lights help](images/traffic-lights.png)
