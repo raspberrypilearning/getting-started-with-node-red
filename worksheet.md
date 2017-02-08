@@ -40,7 +40,7 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
 
 # Start Node-RED
 
-1. Start up your Raspberry Pi. Click on the Raspberry icon, then the `Programming` menu to open Node-RED.
+1. Start up your Raspberry Pi. Click on the Raspberry icon, then the **Programming** menu to open Node-RED.
 
   ![Start up Node-RED](images/start-nodered.png)
 
@@ -48,7 +48,7 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
 
   ![Node-RED startup information](images/node-red-startup.png)
 
-1. Now go to the `Internet` menu and open the Chromium Web Browser.
+1. Now go to the **Internet** menu and open **Chromium Web Browser**.
 
   ![Open Chromium](images/start-chromium.png)
 
@@ -58,35 +58,35 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
 
 # Connecting to a GPIO pin
 
-Programs in Node-RED are called flows. You can see that your blank page is labelled as "Flow 1" in the tab at the top. You can create as many flows as you want and they can all run at the same time. For this guide, we will only need one flow.
+Programs in Node-RED are called **flows**. You can see that your blank page is labelled as **Flow 1** in the tab at the top. You can create as many flows as you want and they can all run at the same time. For this guide, we will only need one flow.
 
-1. The coloured blocks on the left side of the interface are the **nodes**. Scroll right down to the bottom of the list and you will see some nodes labelled Raspberry Pi.
+1. The coloured blocks on the left side of the interface are the **nodes**. Scroll right down to the bottom of the list and you will see some nodes labelled **Raspberry Pi**.
 
   ![Raspberry Pi nodes](images/raspberry-pi-nodes.png)
 
-1. You will see two nodes with the label `rpi gpio` - these are the ones we will use to talk to the GPIO pins on the Raspberry Pi. The first one in the list, with the raspberry picture on the left, is for *inputs*, for example when we want to use a button to provide an input. The second node, with the raspberry picture on the right, is for *outputs*, for example when we want to tell an LED to light up. Drag an output node onto the blank page in the middle.
+1. You will see two nodes with the label **rpi gpio** - these are the ones we will use to talk to the GPIO pins on the Raspberry Pi. The first one in the list, with the raspberry picture on the left, is for inputs. Using a button push to control something would be an example of an input. The second node, with the raspberry picture on the right, is for outputs. Switching on an LED would be an example of an output. Drag an output node onto the blank page in the middle.
 
   ![GPIO output node](images/drag-output-node.png)
 
-1. Double-click on the node and a box will appear to let you configure the node. Change the GPIO pin to be **GPIO17** and tick **Initialise pin state?**. Leave the setting for **Initial level of pin** on low. Give the node a name - we called it Green LED because the LED we used was green, but if yours is a different colour feel free to change the name. When you are finished, click "Done".
+1. Double-click on the node and a box will appear to let you configure the node. Change the GPIO pin to be **GPIO17** and tick **Initialise pin state?**. Leave the setting for **Initial level of pin** on **low**. Give the node a name - we called it Green LED because the LED we used was green, but if yours is a different colour feel free to change the name. When you are finished, click **Done**.
 
   ![Set up output node](images/set-up-output.png)
 
 # Injecting messages
 
-1. Now scroll back up to the list of nodes. To turn the LED on and off, we need an input. In Node-RED we can *inject* messages into the flow and cause things to happen as a result. Drag an `inject` node onto the flow.
+1. Now scroll back up to the list of nodes. To turn the LED on and off, we need an input. In Node-RED we can inject messages into the flow and cause things to happen as a result. Drag an **inject** node onto the flow.
 
   ![Inject node](images/inject-node.png)
 
-1. Double click on the inject node. Use the drop down next to **Payload** to change the data type to 'string' and type 1 in the Payload box - this will be the message. Type "On" in the 'Name' box. Press Done.
+1. Double click on the inject node. Use the drop down next to **Payload** to change the data type to **string** and type `1` in the Payload box - this will be the message. Type `On` in the **Name** box. Press Done.
 
   ![Edit inject node](images/edit-inject.png)
 
-1. Repeat the previous steps to create another inject node, except this time add 0 as the payload message, and call this node "Off".
+1. Repeat the previous steps to create another inject node, except this time add `0` as the payload message, and call this node **Off**.
 
   ![Create two inject nodes](images/add-2-nodes.png)
 
-1. Now look for the grey dot on the right side of the inject nodes. Click and drag from the grey dot on the "On" node to the grey dot on your LED node to join them up. Repeat for the "Off" node, also joining it to the LED node.
+1. Now look for the grey dot on the right side of the inject nodes. Click and drag from the grey dot on the **On** node to the grey dot on your LED node to join them up. Repeat for the **Off** node, also joining it to the LED node.
 
   ![Join nodes together](images/join-nodes.png)
 
