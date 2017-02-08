@@ -1,12 +1,12 @@
-# Getting started with Node RED
+# Getting started with Node-RED
 
-Node RED is a drag and drop visual tool which comes pre-installed on Raspbian. In this resource we will use Node RED to control LEDs via the Raspberry Pi's GPIO pins.
+Node-RED is a drag-and-drop visual tool which comes pre-installed on Raspbian. In this resource we will use Node-RED to control LEDs via the Raspberry Pi's GPIO pins.
 
 ## GPIO pins
 
-One powerful feature of the Raspberry Pi is the row of GPIO pins along the top edge of the board. GPIO stands for General-Purpose Input/Output. These pins are a physical interface between the Raspberry Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input) or that the Pi can turn on or off (output).
+One powerful feature of the Raspberry Pi is the row of GPIO pins along the top edge of the board. GPIO stands for General-Purpose Input/Output. These pins are a physical interface between the Raspberry Pi and the outside world. At the simplest level, you can think of them as switches that you can turn on or off (input), or that the Raspberry Pi can turn on or off (output).
 
-The GPIO pins allow the Raspberry Pi to control and monitor the outside world by being connected to electronic circuits. The Pi is able to control LEDs, turning them on or off, run motors, and many other things. It's also able to detect whether a switch has been pressed, the temperature, and light. We refer to this as physical computing.
+The GPIO pins are used to connect the Raspberry Pi to electronic circuits, which allow it to control and monitor the outside world. Using the GPIO pins, the Raspberry Pi is able to turn LEDs on or off, run motors, and perform many other actions. It is also able to detect external conditions, such as temperature, light levels, and whether a switch has been pressed. We refer to this as physical computing.
 
 There are 40 pins on the Raspberry Pi (26 pins on early models), and they provide various different functions.
 
@@ -22,13 +22,13 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
 
 |   |   |   |
 |---|---|---|
-| 3V3 | 3.3 volts | Anything connected to these pins will always get 3.3V of power |
-| 5V | 5 volts | Anything connected to these pins will always get 5V of power |
+| 3V3 | 3.3 volts | Anything connected to these pins will always receive 3.3V of power |
+| 5V | 5 volts | Anything connected to these pins will always receive 5V of power |
 | GND | ground | Zero volts, used to complete a circuit |
 | GP2 | GPIO pin 2 | These pins are for general-purpose use and can be configured as input or output pins |
 | ID_SC/ID_SD/DNC | Special purpose pins ||
 
-**WARNING**: If you follow the instructions, then playing about with the GPIO pins is safe and fun. Randomly plugging wires and power sources into your Pi, however, may destroy it, especially if using the 5V pins.
+**WARNING**: If you follow the instructions, then playing about with the GPIO pins is safe and fun. Randomly plugging wires and power sources into your Raspberry Pi, however, may destroy it, especially if using the 5V pins.
 
 ## Wire up the LED
 
@@ -38,47 +38,47 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
 
   The positive leg of the LED is usually longer, and it is this leg which should be inserted into the left side of the breadboard (e1 on the diagram).
 
-# Start Node RED
+# Start Node-RED
 
-1. Start up your Raspberry Pi. Click on the Raspberry icon, then the `Programming` menu to open Node RED
+1. Start up your Raspberry Pi. Click on the Raspberry icon, then the `Programming` menu to open Node-RED.
 
-  ![Start up Node RED](images/start-nodered.png)
+  ![Start up Node-RED](images/start-nodered.png)
 
-1. You should see a window displaying some information about Node RED starting up.
+1. You should see a window displaying information about Node-RED starting up.
 
-  ![Node RED startup information](images/node-red-startup.png)
+  ![Node-RED startup information](images/node-red-startup.png)
 
-1. Now go to the `Internet` menu and open the Chromium Web Browser
+1. Now go to the `Internet` menu and open the Chromium Web Browser.
 
   ![Open Chromium](images/start-chromium.png)
 
-1. In Chromium, locate the address bar at the top and type in `localhost:1880`, then press Enter. This will display the Node RED interface. (Your Raspberry Pi does not need to be connected to the internet to use Node RED - `localhost` is the address the Raspberry Pi uses to refer to itself and `:1880` means that it is looking at port 1880.)
+1. In Chromium, locate the address bar at the top and type in `localhost:1880`, then press Enter. This will display the Node-RED interface. (Your Raspberry Pi does not need to be connected to the internet to use Node-RED - `localhost` is the address the Raspberry Pi uses to refer to itself and `:1880` means that it is looking at port 1880.)
 
-  ![Navigate to Node RED](images/blank-node-red.png)
+  ![Navigate to Node-RED](images/blank-node-red.png)
 
 # Connecting to a GPIO pin
 
-Programs in Node RED are called flows. You can see that your blank page is labelled as "Flow 1" in the tab at the top. You can create as many flows as you want and they can all run at the same time. For this guide, we will only need one flow.
+Programs in Node-RED are called flows. You can see that your blank page is labelled as "Flow 1" in the tab at the top. You can create as many flows as you want and they can all run at the same time. For this guide, we will only need one flow.
 
 1. The coloured blocks on the left side of the interface are the **nodes**. Scroll right down to the bottom of the list and you will see some nodes labelled Raspberry Pi.
 
   ![Raspberry Pi nodes](images/raspberry-pi-nodes.png)
 
-1. You will see two nodes with the label `rpi gpio` - these are the ones we will use to talk to the GPIO pins on the Raspberry Pi. The first one in the list with the raspberry picture on the left is for *inputs*, for example when we want to get an input from a button. The second node with the raspberry picture on the right is for *outputs*, for example when we want to tell a LED to light up. Drag an output node onto the blank page in the middle.
+1. You will see two nodes with the label `rpi gpio` - these are the ones we will use to talk to the GPIO pins on the Raspberry Pi. The first one in the list, with the raspberry picture on the left, is for *inputs*, for example when we want to use a button to provide an input. The second node, with the raspberry picture on the right, is for *outputs*, for example when we want to tell an LED to light up. Drag an output node onto the blank page in the middle.
 
   ![GPIO output node](images/drag-output-node.png)
 
-1. Double click on the node and a box will appear to let you configure the node. Change the GPIO pin to be **GPIO17** and tick **Initialise pin state?**. Leave the setting for **Initial level of pin** on low. Give the node a name - we called it Green LED because the LED we used was green, but if yours is a different colour feel free to change the name. When you are finished, click "Done".
+1. Double-click on the node and a box will appear to let you configure the node. Change the GPIO pin to be **GPIO17** and tick **Initialise pin state?**. Leave the setting for **Initial level of pin** on low. Give the node a name - we called it Green LED because the LED we used was green, but if yours is a different colour feel free to change the name. When you are finished, click "Done".
 
   ![Set up output node](images/set-up-output.png)
 
 # Injecting messages
 
-1. Now scroll back up to the list of nodes. To turn the LED on and off, we need an input - in Node RED we can *inject* messages into the flow and cause things to happen as a result. Drag an `inject` node onto the flow.
+1. Now scroll back up to the list of nodes. To turn the LED on and off, we need an input. In Node-RED we can *inject* messages into the flow and cause things to happen as a result. Drag an `inject` node onto the flow.
 
   ![Inject node](images/inject-node.png)
 
-1. Double click on the inject node. Use the drop down next to **Payload** to change the data type to 'string' and type a 1 in the Payload box - this will be the message. Type "On" in the 'Name' box. Press Done.
+1. Double click on the inject node. Use the drop down next to **Payload** to change the data type to 'string' and type 1 in the Payload box - this will be the message. Type "On" in the 'Name' box. Press Done.
 
   ![Edit inject node](images/edit-inject.png)
 
@@ -90,22 +90,21 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
   ![Join nodes together](images/join-nodes.png)
 
-
 # Deploying the flow
 
-1. Our flow is finished, so we can *Deploy* it. Click on the big red **Deploy** button on the top right of the screen. A message should pop up at the top saying "Successfully deployed". This is similar to pressing the green flag on Scratch or F5 to run your code on Python.
+1. Our flow is finished, so we can deploy it. Click on the big red **Deploy** button on the top right of the screen. A message should pop up at the top saying "Successfully deployed". This is similar to pressing the green flag on Scratch or F5 to run your code on Python.
 
   ![Deploy flow](images/deploy.png)
 
-1. Now click on the blue square on the left of the "On" node to *inject* the message `1`. The **Green LED** node receives the message and your LED should light up. You should be able to turn the LED off by clicking the blue square on the "Off" node, which injects the message `0`.
+1. Now click on the blue square on the left of the **On** node to inject the message `1`. The **Green LED** node receives the message and your LED should light up. You should be able to turn the LED off by clicking the blue square on the **Off** node, which injects the message `0`.
 
   ![Deploy on](images/deploy-on.png)
 
 # Debugging your flow
 
-1. If your LED doesn't turn on and off, firstly check you have wired the components correctly on the breadboard. Also make sure you check you have wired your LED to Ground and Pin 17 on your Raspberry Pi.
+1. If your LED doesn't turn on and off, firstly check you have wired the components correctly on the breadboard. Also make sure you check you have wired your LED to both Ground and Pin 17 on your Raspberry Pi.
 
-  You can also ask Node RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node RED will show you what was injected in the **Debug** tab on the right side of the screen - click the tab to display the messages.
+  You can also ask Node-RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node-RED will show you what was injected in the **Debug** tab on the right side of the screen - click the tab to display the messages.
 
   ![Debug node](images/debug-node.png)
 
@@ -115,27 +114,27 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
 # Adding a button
 
-1. Now let's add a button to control the LED. Wire up your button to the Raspberry Pi as shown in the image below so that your LED is still connected to GPIO pin 17 and your button is connected to GPIO pin 4:
+1. Now let's add a button to control the LED. Wire up your button to the Raspberry Pi as shown in the image below, so that your LED is still connected to GPIO pin 17, and your button is connected to GPIO pin 4:
 
   ![Button and LED](images/buttonlightsLED.gif)
 
 1. Remove your "Turn on" and "Turn off" inject nodes by clicking the node and pressing "Delete" on the keyboard. We no longer need these as we will be controlling the LED using a physical button.
 
-1. Now we need to add a Raspberry Pi GPIO input node - this is the node with the raspberry symbol on the left. Set up this node to receive input from your physical button as follows:
+1. Now we need to add a Raspberry Pi GPIO input node. This is the node with the raspberry symbol on the left. Set up this node to receive input from your physical button as follows:
 
   ![Set up the button node](images/set-up-input.png)
 
   Specifying "pullup" means that GPIO pin 4 will be set to `HIGH`, and pressing the button will cause it to go `LOW`.
 
-1. Now join up your button node output to the debug and LED nodes you already had, then deploy the flow and test it by pressing the button.
+1. Now join up your button node output to the existing debug and LED nodes, then deploy the flow and test it by pressing the button.
 
   ![Button flow set up wrongly](images/wrong-button-flow.png)
 
-  You will notice that the LED starts off being on, and when you press the button it goes off - that's not quite right! This is because we are using "pullup" as explained in the previous step - the button pin will be `HIGH` by default. `HIGH` generates the message 1, and this turns the LED on. When we press the button, we cause the pin to go `LOW`, generating a 0 message which turns off the LED. So, we need to reverse the values - we want the LED to receive message `0` by default and the message `1` when the button is pressed.
+  You will notice that the LED is lit to start with, and pressing the button switches it off. That's not quite right! This is because we are using "pullup" as explained in the previous step, so the button pin will be 'HIGH' by default. 'HIGH' generates the message '1', and this turns the LED on. When we press the button, we cause the pin to go 'LOW', generating a '0' message which turns off the LED. We need to reverse the values. We want the LED to receive the message `0` by default and the message '1' when the button is pressed.
 
 1. Remove the connection you made between the button node and the LED node by clicking on the line and pressing "Delete" on the keyboard.
 
-1. Add a switch node which can be found in the *function* section. This node is similar to the `if / elif / else` type constructs you may have seen in Scratch or Python. You can configure it to have multiple output paths (outlined in red on the screenshot) depending on the value passed in. In this case we will set up the node so that if the property `msg.payload` is equal to 1, the first path will be followed. Click the small "Add" button at the bottom to add a second path, and for this path select "otherwise" in the drop down. This path will be followed if the input was anything other than 1. Click "Done" when you are finished.
+1. Add a switch node. This can be found in the **function** section. This node is similar to the `if`/`elif`/`else` type constructs you may have seen in Scratch or Python. You can configure it to have multiple output paths (outlined in red on the screenshot) depending on the value passed in. In this case we will set up the node so that if the property 'msg.payload' is equal to 1, the first path will be followed. Click the small "Add" button at the bottom to add a second path, and for this path select "otherwise" in the drop down. This path will be followed if the input was anything other than 1. Click "Done" when you are finished.
 
   ![Switch node](images/switch-node.png)
 
@@ -145,15 +144,15 @@ Programs in Node RED are called flows. You can see that your blank page is label
 
 1. Join up the GPIO input button node to the *input* (left side) of the switch node.
 
-1. Now drag in a yellow "change" node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember when we created the switch node, the first output was set to be followed if the input message was 1. We will use the *change* node to change the message to 0.
+1. Now drag in a yellow "change" node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember - when we created the switch node, the first output was set to be followed if the input message was '1'. We will use the *change* node to change the message to '0'.
 
   ![Change node](images/change-node.png)
 
-1. Press "Done" and then draw a line from first output of the switch node to the change node. Then connect the output of the change node to the LED node:
+1. Press "Done", then draw a line from first output of the switch node to the change node. Then connect the output of the change node to the LED node:
 
   ![Incomplete flow](images/half-flow.png)
 
-1. Now add another change node to set the `msg.payload` to 0. Connect this node to output 2 of the switch node and then to the LED node. When you are ready, deploy your flow and then push the physical button to confirm it works properly.
+1. Now add another change node to set the 'msg.payload' to '0'. Connect this node to output 2 of the switch node and then to the LED node. When you are ready, deploy your flow and then push the physical button to confirm it works properly.
 
 # What next?
 
@@ -161,6 +160,6 @@ Now that you have a single LED working, why not try wiring up two more LEDs to d
 
 To do this, you will need to use more of the nodes from the *function* section. The *delay* node allows you to wait for a given number of seconds.
 
-For all nodes, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a node to more than one other node, for example the "Start" node below is linked to both the "Red LED" and the "delay 5 s" nodes. Use this example to get you started:
+For all nodes, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a node to more than one other node. For example, the "Start" node below is linked to both the "Red LED" and the "delay 5 s" nodes. Use this example to get you started:
 
   ![Traffic lights help](images/traffic-lights.png)
