@@ -102,13 +102,13 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
 # Debugging your flow
 
-1. If your LED doesn't turn on and off, firstly check you have wired the components correctly on the breadboard. Also make sure you check you have wired your LED to both Ground and Pin 17 on your Raspberry Pi.
+1. If your LED doesn't turn on and off, firstly check that you have wired the components correctly on the breadboard. Make sure you have wired your LED to both **Ground** and **Pin 17** on your Raspberry Pi.
 
-  You can also ask Node-RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under *output*. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node-RED will show you what was injected in the **Debug** tab on the right side of the screen - click the tab to display the messages.
+  You can also ask Node-RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under **output**. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node-RED will show you what was injected in the **Debug** tab on the right side of the screen. Click the tab to display the messages.
 
   ![Debug node](images/debug-node.png)
 
-  For example, this is the output if you click first on the "On" node and then on the "Off" node.
+  For example, this is the output if you click first on the **On** node and then on the **Off** node.
 
   ![Debug panel](images/debug-panel.png)
 
@@ -118,48 +118,48 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Button and LED](images/buttonlightsLED.gif)
 
-1. Remove your "Turn on" and "Turn off" inject nodes by clicking the node and pressing "Delete" on the keyboard. We no longer need these as we will be controlling the LED using a physical button.
+1. Remove your **Turn on** and **Turn off** inject nodes by clicking the node and pressing **Delete** on the keyboard. We no longer need these, as we will be controlling the LED using a physical button.
 
 1. Now we need to add a Raspberry Pi GPIO input node. This is the node with the raspberry symbol on the left. Set up this node to receive input from your physical button as follows:
 
   ![Set up the button node](images/set-up-input.png)
 
-  Specifying "pullup" means that GPIO pin 4 will be set to `HIGH`, and pressing the button will cause it to go `LOW`.
+  Specifying **pullup** means that GPIO pin 4 will be set to **HIGH**, and pressing the button will cause it to go **LOW**.
 
-1. Now join up your button node output to the existing debug and LED nodes, then deploy the flow and test it by pressing the button.
+1. Now join up your button node output to the existing debug and LED nodes. Deploy the flow and test it by pressing the button.
 
   ![Button flow set up wrongly](images/wrong-button-flow.png)
 
-  You will notice that the LED is lit to start with, and pressing the button switches it off. That's not quite right! This is because we are using "pullup" as explained in the previous step, so the button pin will be 'HIGH' by default. 'HIGH' generates the message '1', and this turns the LED on. When we press the button, we cause the pin to go 'LOW', generating a '0' message which turns off the LED. We need to reverse the values. We want the LED to receive the message `0` by default and the message '1' when the button is pressed.
+  You will notice that the LED is lit to start with, and that pressing the button switches it off. That's not quite right! This is because we are using **pullup** as explained in the previous step, so the button pin will be **HIGH** by default. **HIGH** generates the message `1`, and this turns the LED on. When we press the button, we cause the pin to go **LOW**, generating a `0` message which turns off the LED. We need to reverse the values. We want the LED to receive the message `0` by default and the message `1` when the button is pressed.
 
-1. Remove the connection you made between the button node and the LED node by clicking on the line and pressing "Delete" on the keyboard.
+1. Remove the connection you made between the button node and the LED node by clicking on the line and pressing **Delete** on the keyboard.
 
-1. Add a switch node. This can be found in the **function** section. This node is similar to the `if`/`elif`/`else` type constructs you may have seen in Scratch or Python. You can configure it to have multiple output paths (outlined in red on the screenshot) depending on the value passed in. In this case we will set up the node so that if the property 'msg.payload' is equal to 1, the first path will be followed. Click the small "Add" button at the bottom to add a second path, and for this path select "otherwise" in the drop down. This path will be followed if the input was anything other than 1. Click "Done" when you are finished.
+1. Add a switch node. This can be found in the **function** section. This node is similar to the `if`/`elif`/`else` type constructs you may have seen in Scratch or Python. You can configure it to have multiple output paths (outlined in red on the screenshot) depending on the value passed in. In this case we will set up the node so that if the property **msg.payload** is equal to 1, the first path will be followed. Click the small **Add** button at the bottom to add a second path, and for this path select **otherwise** in the drop down. This path will be followed if the input was anything other than 1. Click **Done** when you are finished.
 
   ![Switch node](images/switch-node.png)
 
-1. You should see your newly created switch node, with two dots on the right side for outputs. Note that the title "If input is 1" is simply a description of what the node does, and has no effect on its function.
+1. You should see your newly created switch node, with two dots on the right side for outputs. Note that the title **If input is 1** is simply a description of what the node does, and has no effect on its function.
 
   ![Switch example](images/switch-example.png)
 
-1. Join up the GPIO input button node to the *input* (left side) of the switch node.
+1. Join up the GPIO input button node to the input (left side) of the switch node.
 
-1. Now drag in a yellow "change" node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember - when we created the switch node, the first output was set to be followed if the input message was '1'. We will use the *change* node to change the message to '0'.
+1. Now drag in a yellow **change** node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember: when we created the switch node, the first output was set to be followed if the input message was `1`. We will use the change node to change the message to `0`.
 
   ![Change node](images/change-node.png)
 
-1. Press "Done", then draw a line from first output of the switch node to the change node. Then connect the output of the change node to the LED node:
+1. Press **Done**, then draw a line from first output of the switch node to the change node. Then connect the output of the change node to the LED node:
 
   ![Incomplete flow](images/half-flow.png)
 
-1. Now add another change node to set the 'msg.payload' to '0'. Connect this node to output 2 of the switch node and then to the LED node. When you are ready, deploy your flow and then push the physical button to confirm it works properly.
+1. Now add another change node to set the **msg.payload** to `0`. Connect this node to **output 2** of the switch node and then to the LED node. When you are ready, deploy your flow and then push the physical button to confirm that it works properly.
 
 # What next?
 
 Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator? Can it be controlled with a button?
 
-To do this, you will need to use more of the nodes from the *function* section. The *delay* node allows you to wait for a given number of seconds.
+To do this, you will need to use more of the nodes from the **function** section. The **delay** node allows you to wait for a given number of seconds.
 
-For all nodes, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a node to more than one other node. For example, the "Start" node below is linked to both the "Red LED" and the "delay 5 s" nodes. Use this example to get you started:
+For all nodes, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a node to more than one other node. For example, the **Start** node below is linked to both the **Red LED** and the **delay 5 s** nodes. Use this example to get you started:
 
   ![Traffic lights help](images/traffic-lights.png)
