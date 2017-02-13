@@ -78,7 +78,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Inject node](images/inject-node.png)
 
-1. Double click on the inject node. Use the drop down next to **Payload** to change the data type to **string** and type `1` in the Payload box - this will be the message. Type `On` in the **Name** box. Press Done.
+1. Double-click on the inject node. Use the drop down next to **Payload** to change the data type to **string** and type `1` in the Payload box - this will be the message. Type `On` in the **Name** box. Press Done.
 
   ![Edit inject node](images/edit-inject.png)
 
@@ -144,7 +144,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
 1. Join up the GPIO input button node to the input (left side) of the switch node.
 
-1. Now drag in a yellow **change** node from the functions section and double click on it to configure it. We will use this node to change the message being sent. Remember: when we created the switch node, the first output was set to be followed if the input message was `1`. We will use the change node to change the message to `0`.
+1. Now drag in a yellow **change** node from the functions section and double-click on it to configure it. We will use this node to change the message being sent. Remember: when we created the switch node, the first output was set to be followed if the input message was `1`. We will use the change node to change the message to `0`.
 
   ![Change node](images/change-node.png)
 
@@ -160,6 +160,6 @@ Now that you have a single LED working, why not try wiring up two more LEDs to d
 
 To do this, you will need to use more of the nodes from the **function** section. The **delay** node allows you to wait for a given number of seconds.
 
-For all nodes, you can drag them in as you did before, and double click on them to change their configuration. Don't forget that you can link a node to more than one other node. For example, the **Start** node below is linked to both the **Red LED** and the **delay 5 s** nodes. Use this example to get you started:
+For all nodes, you can drag them in as you did before, and double-click on them to change their configuration. Don't forget that you can link a node to more than one other node. For example, the **Start** node below is linked to both the **Red LED** and the **delay 5 s** nodes. Use this example to get you started:
 
   ![Traffic lights help](images/traffic-lights.png)
