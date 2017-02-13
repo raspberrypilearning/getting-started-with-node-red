@@ -38,7 +38,7 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, and so on:
 
   The positive leg of the LED is usually longer, and it is this leg which should be inserted into the left side of the breadboard (e1 on the diagram).
 
-# Start Node-RED
+## Start Node-RED
 
 1. Start up your Raspberry Pi. Click on the Raspberry icon, then the **Programming** menu to open Node-RED.
 
@@ -56,7 +56,7 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, and so on:
 
   ![Navigate to Node-RED](images/blank-node-red.png)
 
-# Connecting to a GPIO pin
+## Connecting to a GPIO pin
 
 Programs in Node-RED are called **flows**. You can see that your blank page is labelled as **Flow 1** in the tab at the top. You can create as many flows as you want and they can all run at the same time. For this guide, we will only need one flow.
 
@@ -72,7 +72,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Set up output node](images/set-up-output.png)
 
-# Injecting messages
+## Injecting messages
 
 1. Now scroll back up to the list of nodes. To turn the LED on and off, we need an input. In Node-RED we can inject messages into the flow and cause things to happen as a result. Drag an **inject** node onto the flow.
 
@@ -90,7 +90,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Join nodes together](images/join-nodes.png)
 
-# Deploying the flow
+## Deploying the flow
 
 1. Our flow is finished, so we can deploy it. Click on the big red **Deploy** button on the top right of the screen. A message should pop up at the top saying "Successfully deployed". This is similar to pressing the green flag on Scratch or F5 to run your code on Python.
 
@@ -100,7 +100,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Deploy on](images/deploy-on.png)
 
-# Debugging your flow
+## Debugging your flow
 
 1. If your LED doesn't turn on and off, firstly check that you have wired the components correctly on the breadboard. Make sure you have wired your LED to both **Ground** and **Pin 17** on your Raspberry Pi.
 
@@ -112,7 +112,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Debug panel](images/debug-panel.png)
 
-# Adding a button
+## Adding a button
 
 1. Now let's add a button to control the LED. Wire up your button to the Raspberry Pi as shown in the image below, so that your LED is still connected to GPIO pin 17, and your button is connected to GPIO pin 4:
 
@@ -154,7 +154,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
 1. Now add another change node to set the **msg.payload** to `0`. Connect this node to **output 2** of the switch node and then to the LED node. When you are ready, deploy your flow and then push the physical button to confirm that it works properly.
 
-# What next?
+## What next?
 
 Now that you have a single LED working, why not try wiring up two more LEDs to different pins on your Raspberry Pi, and creating a traffic light simulator? Can it be controlled with a button?
 
