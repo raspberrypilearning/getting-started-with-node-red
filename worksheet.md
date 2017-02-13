@@ -28,7 +28,7 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, and so on:
 | GP2 | GPIO pin 2 | These pins are for general-purpose use and can be configured as input or output pins |
 | ID_SC/ID_SD/DNC | Special purpose pins ||
 
-**WARNING**: If you follow the instructions, then playing about with the GPIO pins is safe and fun. Randomly plugging wires and power sources into your Raspberry Pi, however, may destroy it, especially if using the 5V pins.
+**WARNING**: if you follow the instructions, then playing about with the GPIO pins is safe and fun. Randomly plugging wires and power sources into your Raspberry Pi, however, may destroy it, especially if you are using the 5V pins.
 
 ## Wire up the LED
 
