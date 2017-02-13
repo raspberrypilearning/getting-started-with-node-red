@@ -102,7 +102,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
 ## Debugging your flow
 
-1. If your LED doesn't turn on and off, firstly check that you have wired the components correctly on the breadboard. Make sure you have wired your LED to both **Ground** and **Pin 17** on your Raspberry Pi.
+1. If your LED doesn't turn on and off, firstly check that you have wired the components correctly on the breadboard. Make sure you have wired your LED to both **Ground** and **pin 17** on your Raspberry Pi.
 
   You can also ask Node-RED to display debugging information by wiring up your nodes to a **Debug** node, which can be found under **output**. Drag in a debug node and wire your two inject nodes to it, then click Deploy. When you click the buttons to inject the message, Node-RED will show you what was injected in the **Debug** tab on the right side of the screen. Click the tab to display the messages.
 
@@ -120,7 +120,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
 1. Remove your **Turn on** and **Turn off** inject nodes by clicking the node and pressing **Delete** on the keyboard. We no longer need these, as we will be controlling the LED using a physical button.
 
-1. Now we need to add a Raspberry Pi GPIO input node. This is the node with the raspberry symbol on the left. Set up this node to receive input from your physical button as follows:
+1. Now we need to add a Raspberry Pi GPIO input node. This is the node with the raspberry icon on the left. Set up this node to receive input from your physical button as follows:
 
   ![Set up the button node](images/set-up-input.png)
 
