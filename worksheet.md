@@ -52,7 +52,7 @@ You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, and so on:
 
   ![Open Chromium](images/start-chromium.png)
 
-1. In Chromium, locate the address bar at the top and type in `localhost:1880`, then press Enter. This will display the Node-RED interface. (Your Raspberry Pi does not need to be connected to the internet to use Node-RED - `localhost` is the address the Raspberry Pi uses to refer to itself and `:1880` means that it is looking at port 1880.)
+1. In Chromium, locate the address bar at the top and type in `localhost:1880`, then press Enter. This will display the Node-RED interface. (Your Raspberry Pi does not need to be connected to the internet to use Node-RED: `localhost` is the address the Raspberry Pi uses to refer to itself and `:1880` means that it is looking at port 1880.)
 
   ![Navigate to Node-RED](images/blank-node-red.png)
 
