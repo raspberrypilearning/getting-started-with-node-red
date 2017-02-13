@@ -92,7 +92,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
 ## Deploying the flow
 
-1. Our flow is finished, so we can deploy it. Click on the big red **Deploy** button on the top right of the screen. A message should pop up at the top saying "Successfully deployed". This is similar to pressing the green flag on Scratch or F5 to run your code on Python.
+1. Our flow is finished, so we can deploy it. Click on the big red **Deploy** button on the top right of the screen. A message should pop up at the top saying "Successfully deployed". This is similar to pressing the green flag in Scratch or F5 to run your code in Python.
 
   ![Deploy flow](images/deploy.png)
 
