@@ -1,4 +1,4 @@
-- name: LED
+- name: 1 x LED
   img: led
 - name: 1 x Solderless breadboard
   img: breadboard
