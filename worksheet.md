@@ -64,7 +64,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Raspberry Pi nodes](images/raspberry-pi-nodes.png)
 
-1. You will see two nodes with the label **rpi gpio** - these are the ones we will use to talk to the GPIO pins on the Raspberry Pi. The first one in the list, with the raspberry picture on the left, is for inputs. Using a button push to control something would be an example of an input. The second node, with the raspberry picture on the right, is for outputs. Switching on an LED would be an example of an output. Drag an output node onto the blank page in the middle.
+1. You will see two nodes with the label **rpi gpio**: these are the ones we will use to talk to the GPIO pins on the Raspberry Pi. The first one in the list, with the raspberry icon on the left, is for inputs. Using a button push to control something would be an example of an input. The second node, with the raspberry icon on the right, is for outputs. Switching on an LED would be an example of an output. Drag an output node onto the blank page in the middle.
 
   ![GPIO output node](images/drag-output-node.png)
 
