@@ -18,7 +18,7 @@ If you don't have a pin label, then this guide can help you to identify the pin 
 
 ![](images/pinout.png)
 
-You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, etc:
+You'll see pins labelled as 3V3, 5V, GND and GP2, GP3, and so on:
 
 |   |   |   |
 |---|---|---|
