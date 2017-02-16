@@ -152,7 +152,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
   ![Incomplete flow](images/half-flow.png)
 
-1. Now add another change node which set the **msg.payload** to `1`. Connect this node to **output 2** of the switch node and then to the LED node. This tells the flow that when the **otherwise** branch is followed (i.e. the **msg.payload** was not already `1`), we would like to change it to `1`. When you are ready, deploy your flow, and then push the physical button to confirm that it works properly.
+1. Now add another change node which sets the **msg.payload** to `1`. Connect this node to **output 2** of the switch node and then to the LED node. This tells the flow that when the **otherwise** branch is followed (i.e. the **msg.payload** was not already `1`), we would like to change it to `1`. When you are ready, deploy your flow, and then push the physical button to confirm that it works properly.
 
     ![Final flow](images/final-flow.png)
 
