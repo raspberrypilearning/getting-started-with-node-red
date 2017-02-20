@@ -116,7 +116,7 @@ Programs in Node-RED are called **flows**. You can see that your blank page is l
 
 1. Now let's add a button to control the LED. Wire up your button to the Raspberry Pi as shown in the image below, so that your LED is still connected to GPIO pin 17, and your button is connected to GPIO pin 4:
 
-  ![Button and LED](images/buttonlightsLED.gif)
+  ![Button and LED](images/buttonlightsLED.png)
 
 1. Remove your **Turn on** and **Turn off** inject nodes by clicking the node and pressing **Delete** on the keyboard. We no longer need these, as we will be controlling the LED using a physical button.
 
