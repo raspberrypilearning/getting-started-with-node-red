@@ -1,0 +1,29 @@
+---
+title: Getting started with Node-RED
+hero_image: images/banner.png
+description: In this resource you will learn how to use Node-RED to control Raspberry
+  Pi GPIO pins
+original_url: https://raspberrypi.org/learning/getting-started-with-node-red
+theme: red
+duration: 2
+listed: true
+ingredient: false
+copyedit: true
+curriculum: creator, design-0, programming-0, phys-comp-0, manufacture-0, community-0
+interests: ''
+technologies: rpi, physical computing, python
+site_areas: ''
+steps:
+- title: Introduction
+- title: What you will need
+- title: Getting started with Node-RED
+- title: GPIO pins
+- title: Wire up the LED
+- title: Start Node-RED
+- title: Connecting to a GPIO pin
+- title: Injecting messages
+- title: Deploying the flow
+- title: Debugging your flow
+- title: Adding a button
+- title: What next?
+
