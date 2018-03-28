@@ -6,5 +6,5 @@ To do this, you will need to use more of the nodes from the **function** section
 
 For all nodes, you can drag them in as you did before, and double-click on them to change their configuration. Don't forget that you can link a node to more than one other node. For example, the **Start** node below is linked to both the **Red LED** and the **delay 5 s** nodes. Use this example to get you started:
 
- ![Traffic lights help](images/traffic-lights.png)
+  ![Traffic lights help](images/traffic-lights.png)
 
