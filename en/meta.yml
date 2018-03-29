@@ -4,7 +4,7 @@ hero_image: images/banner.png
 description: In this resource you will learn how to use Node-RED to control Raspberry
 Pi GPIO pins
 original_url: https://raspberrypi.org/learning/getting-started-with-node-red
-theme: red
+theme: orange
 duration: 2
 listed: true
 ingredient: false
