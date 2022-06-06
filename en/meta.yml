@@ -20,15 +20,17 @@ last_tested: 2017-01-01
 steps:
 - title: Introduction
 - title: What you will need
-  completion: engaged
 - title: Getting started with Node-RED
 - title: GPIO pins
+  completion:
+  - engaged
 - title: Wire up the LED
 - title: Start Node-RED
 - title: Connecting to a GPIO pin
 - title: Injecting messages
 - title: Deploying the flow
 - title: Debugging your flow
-  completion: internal
 - title: Adding a button
+  completion:
+  - internal
 - title: What next?
