@@ -6,7 +6,7 @@ description: In this resource you will learn how to use Node-RED to control Rasp
 original_url: https://raspberrypi.org/learning/getting-started-with-node-red
 theme: orange
 duration: 2
-listed: true
+listed: false
 ingredient: false
 copyedit: true
 curriculum: 1, design-0, programming-1, phys-comp-1, manufacture-0, community-0
